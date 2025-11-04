@@ -27,11 +27,22 @@ jobs:
           npm ci           # Install dependencies exactly as in package-lock.json
           npm run build    # Build production frontend files
 
-      - name: Upload to S3
-        run: aws s3 sync frontend/dist s3://santosh-s3-bucket-demo --delete  # Sync build folder to S3 bucket
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Deploy Lambda (SAM)
         run: |
           cd backend
-          pip install aws-sam-cli  # Install SAM CLI
-          sam build && sam deploy --no-confirm-changeset --stack-name santosh-portfolio-api --capabilities CAPABILITY_IAM  # Build & deploy Lambda
+          pip install aws-sam-cli
+          sam build && sam deploy --no-confirm-changeset --stack-name santosh-portfolio-api --capabilities CAPABILITY_IAM
+
+      - name: Upload Frontend to S3
+        run: aws s3 sync frontend/dist s3://santosh-s3-bucket-demo --delete
