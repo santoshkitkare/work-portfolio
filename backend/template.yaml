@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31  # SAM transform to simplify serverless resource definition
+Description: Lambda contact API for portfolio
+Resources:
+  ContactFunction:
+    Type: AWS::Serverless::Function  # SAM Lambda resource
+    Properties:
+      CodeUri: ./                     # Code folder location
+      Handler: lambda_function.lambda_handler # Python handler function
+      Runtime: python3.11             # Python runtime version
+      Environment:                    # Environment variables for email
+        Variables:
+          SMTP_USER: "talktoitu@gmail.com"
+          SMTP_PASS: "kalidas7183"
+          TO_EMAIL: "santoshkitkare@gmail.com"
+      Events:
+        Api:                         # API Gateway trigger for Lambda
+          Type: Api
+          Properties:
+            Path: /api/contact        # Endpoint path
+            Method: post              # HTTP method
