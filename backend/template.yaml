@@ -10,12 +10,17 @@ Resources:                             # Must exist; top-level section required 
       Runtime: python3.11             # Runtime environment
       Environment:                    # Environment variables for SMTP
         Variables:
-          SMTP_USER: "youremail@gmail.com"
-          SMTP_PASS: "yourpassword"
-          TO_EMAIL: "youremail@gmail.com"
+          SMTP_USER: "talktoitu@gmail.com"
+          SMTP_PASS: "kalidas7183"
+          TO_EMAIL: "talktoitu@gmail.com"
       Events:
         Api:                          # API Gateway trigger for Lambda
           Type: Api
           Properties:
             Path: /api/contact        # HTTP endpoint path
             Method: post              # HTTP method to trigger Lambda
+
+      Outputs:
+        ApiUrl:
+          Description: "API Gateway endpoint URL"
+          Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/contact"

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { API_URL } from './config';
 
 // Single-file React component portfolio
 // - Tailwind CSS utility classes are used for styling
@@ -84,6 +85,33 @@ export default function Portfolio() {
       who: 'Colleague / Manager'
     }
   ];
+
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus('Sending...');
+
+    const data = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      message: event.target.message.value,
+    };
+
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      setStatus(result.message);
+    } catch (err) {
+      console.error(err);
+      setStatus('Failed to send message.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
@@ -222,8 +250,7 @@ export default function Portfolio() {
           </div>
 
           <div>
-            <form action="/api/contact" method="POST" className="space-y-3">
-              <input type="hidden" name="subject" value={`Contact from portfolio - ${name}`} />
+            <form onSubmit={handleSubmit} className="space-y-3">
               <div>
                 <label className="text-sm">Name</label>
                 <input name="name" required className="w-full mt-1 p-2 border rounded" />
@@ -238,13 +265,13 @@ export default function Portfolio() {
               </div>
               <div className="flex items-center gap-3">
                 <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded">Send</button>
-                <small className="text-xs text-gray-500">Or email me directly at EMAIL_ADDRESS</small>
+                <small className="text-xs text-gray-500">{status || `Or email me directly at EMAIL_ADDRESS`}</small>
               </div>
             </form>
           </div>
         </div>
 
-        <p className="mt-6 text-center text-xs text-gray-400">© {new Date().getFullYear()} {name} — Portfolio. Built with React + Tailwind.</p>
+        <p className="mt-6 text-center text-xs text-gray-400">© {new Date().getFullYear()} Santosh Itkare — Portfolio. Built with React + Tailwind.</p>
       </footer>
     </div>
   );

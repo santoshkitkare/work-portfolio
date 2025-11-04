@@ -44,5 +44,24 @@ jobs:
           pip install aws-sam-cli
           sam build && sam deploy --no-confirm-changeset --stack-name santosh-portfolio-api --capabilities CAPABILITY_IAM --s3-bucket ${{ secrets.AWS_DEPLOY_BUCKET }}
 
+      - name: Get API Gateway URL
+        id: api
+        run: |
+          API_URL=$(aws cloudformation describe-stacks \
+            --stack-name santosh-portfolio-api \
+            --query "Stacks[0].Outputs[?OutputKey=='ApiUrl'].OutputValue" \
+            --output text)
+          echo "API_URL=$API_URL" >> $GITHUB_ENV
+
+      - name: Build Frontend with API URL
+        run: |
+          cd frontend
+          echo "VITE_API_URL=$API_URL" > .env
+          npm ci
+          npm run build
+
+      - name: Upload Frontend to S3
+        run: aws s3 sync frontend/dist s3://YOUR_BUCKET_NAME --delete
+
       - name: Upload Frontend to S3
         run: aws s3 sync frontend/dist s3://${{ secrets.AWS_DEPLOY_BUCKET }} --delete
