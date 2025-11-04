@@ -1,21 +1,37 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31  # SAM transform to simplify serverless resource definition
-Description: Lambda contact API for portfolio
-Resources:
-  ContactFunction:
-    Type: AWS::Serverless::Function  # SAM Lambda resource
-    Properties:
-      CodeUri: ./                     # Code folder location
-      Handler: lambda_function.lambda_handler # Python handler function
-      Runtime: python3.11             # Python runtime version
-      Environment:                    # Environment variables for email
-        Variables:
-          SMTP_USER: "talktoitu@gmail.com"
-          SMTP_PASS: "kalidas7183"
-          TO_EMAIL: "santoshkitkare@gmail.com"
-      Events:
-        Api:                         # API Gateway trigger for Lambda
-          Type: Api
-          Properties:
-            Path: /api/contact        # Endpoint path
-            Method: post              # HTTP method
+name: Deploy Portfolio
+on:
+  push:
+    branches: [ main ]  # Trigger deployment on push to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3  # Checkout repo code
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: YOUR_REGION  # Replace with your AWS region
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18          # Node version for frontend build
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm ci                     # Install exact dependencies from package-lock.json
+          npm run build              # Build production frontend
+
+      - name: Upload to S3
+        run: aws s3 sync frontend/dist s3://YOUR_BUCKET_NAME --delete # Sync built files to S3
+
+      - name: Deploy Lambda (SAM)
+        run: |
+          cd backend
+          pip install aws-sam-cli    # Install SAM CLI
+          sam build && sam deploy --no-confirm-changeset --stack-name santosh-portfolio-api --capabilities CAPABILITY_IAM # Build and deploy Lambda
