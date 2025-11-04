@@ -1,0 +1,31 @@
+name: Deploy Portfolio
+on:
+  push:
+    branches: [ main development]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm ci
+          npm run build
+
+      - name: Upload to S3
+        run: aws s3 sync frontend/dist s3://santosh-s3-bucket-demo --delete
+
+      - name: Deploy Lambda (SAM)
+        run: |
+          cd backend
+          pip install aws-sam-cli
+          sam build && sam deploy --no-confirm-changeset --stack-name santosh-portfolio-api --capabilities CAPABILITY_IAM
+```
