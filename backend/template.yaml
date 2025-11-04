@@ -20,7 +20,7 @@ Resources:                             # Must exist; top-level section required 
             Path: /api/contact        # HTTP endpoint path
             Method: post              # HTTP method to trigger Lambda
 
-      Outputs:
-        ApiUrl:
-          Description: "API Gateway endpoint URL"
-          Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/contact"
+Outputs:
+  ApiUrl:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/contact"
