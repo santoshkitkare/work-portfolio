@@ -61,7 +61,7 @@ jobs:
           npm run build
 
       - name: Upload Frontend to S3
-        run: aws s3 sync frontend/dist s3://YOUR_BUCKET_NAME --delete
+        run: aws s3 sync frontend/dist s3://${{ secrets.AWS_DEPLOY_BUCKET }} --delete
 
       - name: Upload Frontend to S3
         run: aws s3 sync frontend/dist s3://${{ secrets.AWS_DEPLOY_BUCKET }} --delete
