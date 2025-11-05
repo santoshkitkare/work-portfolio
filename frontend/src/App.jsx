@@ -21,20 +21,36 @@ export default function Portfolio() {
   const name = 'Santosh Itkare';
   const title = 'Senior Python Developer • MLOps & LLMOps Engineer';
   const tagline = 'Building production-grade ML systems, automations, and LLM-driven developer tools.';
+  const availability = 'Available for new opportunities'; // Can be changed to "Working as {role} at {company}"
+
+  const education = [
+    {
+      degree: 'B.E. in Computer Engineering',
+      institution: 'North Maharashtra University',
+      year: '2004',
+      score: '63%'
+    },
+    {
+      degree: 'Diploma in Computer Engineering',
+      institution: 'Dr. Babasaheb Ambedkar Technological University',
+      year: '2001',
+      score: '72.92%'
+    }
+  ];
 
   const skills = [
-    { name: 'Python', level: 'Senior' },
-    { name: 'C', level: 'Senior' },
-    { name: 'MLOps / LLMOps', level: 'Senior' },
-    { name: 'AWS (ECS, Lambda, S3)', level: 'Senior' },
-    { name: 'Docker & CI/CD (Jenkins)', level: 'Senior' },
-    { name: 'Terraform & CloudFormation', level: 'Senior' },
-    { name: 'FastAPI', level: 'Senior' },
-    { name: 'Generative AI', level: 'Senior' },
-    { name: 'DynamoDB / PostgreSQL', level: 'Intermediate' },
-    { name: 'Vibe Coding', level: 'Intermediate' },
-    { name: 'OpenAI Assistant API', level: 'Intermediate' },
-    { name: 'Vector Databases', level: 'Intermediate' }
+    { name: 'Python', level: 'Senior', icon: '🐍' },
+    { name: 'C', level: 'Senior', icon: '⚙️' },
+    { name: 'MLOps / LLMOps', level: 'Senior', icon: '🤖' },
+    { name: 'AWS (ECS, Lambda, S3)', level: 'Senior', icon: '☁️' },
+    { name: 'Docker & CI/CD (Jenkins)', level: 'Senior', icon: '🐳' },
+    { name: 'Terraform & CloudFormation', level: 'Senior', icon: '🏗️' },
+    { name: 'FastAPI', level: 'Senior', icon: '⚡' },
+    { name: 'Generative AI', level: 'Senior', icon: '🧠' },
+    { name: 'DynamoDB / PostgreSQL', level: 'Intermediate', icon: '🗄️' },
+    { name: 'Vibe Coding', level: 'Intermediate', icon: '💻' },
+    { name: 'OpenAI Assistant API', level: 'Intermediate', icon: '🤖' },
+    { name: 'Vector Databases', level: 'Intermediate', icon: '📊' }
   ];
 
   // Projects pulled from GitHub (public repos) — update descriptions and links as needed
@@ -253,13 +269,14 @@ export default function Portfolio() {
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
         <div>
-          <p className="text-sm uppercase text-indigo-600 font-medium">Hi, I'm</p>
+          <p className="text-sm uppercase text-primary font-medium">Hi, I'm</p>
           <h2 className="text-4xl font-bold leading-tight">{name}</h2>
           <p className="mt-4 text-lg text-muted">{tagline}</p>
+          <p className="mt-2 text-primary font-medium">{availability}</p>
 
           <div className="mt-6 flex gap-3">
-            <a href="#projects" className="inline-block px-5 py-3 bg-indigo-600 text-white rounded-lg shadow hover:opacity-95">View Work</a>
-            <a href="#contact" className="inline-block px-5 py-3 border border-border rounded-lg">Contact Me</a>
+            <a href="#projects" className="inline-block px-5 py-3 bg-primary text-primary-foreground rounded-lg shadow hover:opacity-95">View Work</a>
+            <a href="#contact" className="inline-block px-5 py-3 border border-border rounded-lg hover:bg-secondary hover:text-secondary-foreground transition-colors">Get In Touch</a>
           </div>
 
           <div className="mt-8 text-sm text-muted">
@@ -292,21 +309,41 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* SKILLS */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-4 text-foreground">Skills & Expertise</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {skills.map((s) => (
-            <div key={s.name} className="bg-card p-4 rounded-lg shadow-sm flex items-center justify-between">
-              <span className="text-sm font-medium text-foreground">{s.name}</span>
-              <span className={`text-xs px-2 py-1 rounded ${
-                s.level === 'Senior' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' :
-                s.level === 'Intermediate' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300' :
-                s.level === 'Learning' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300' :
-                'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300'
-              }`}>{s.level}</span>
-            </div>
-          ))}
+      {/* EDUCATION & SKILLS */}
+      <section className="max-w-6xl mx-auto px-6 py-10 space-y-10">
+        {/* Education Section */}
+        <div className="bg-card rounded-2xl shadow-sm p-6">
+          <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-foreground">
+            <span className="text-2xl">🎓</span> Education
+          </h3>
+          <div className="space-y-6">
+            {education.map((edu, i) => (
+              <div key={i} className="bg-secondary/50 rounded-lg p-6">
+                <h4 className="font-semibold text-lg text-foreground">{edu.degree}</h4>
+                <p className="text-muted mt-1">{edu.institution}</p>
+                <div className="mt-2 flex justify-between text-sm">
+                  <span className="text-primary font-medium">{edu.year}</span>
+                  <span className="text-primary font-medium">{edu.score}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Skills Section */}
+        <div className="bg-card rounded-2xl shadow-sm p-6">
+          <h3 className="text-xl font-semibold mb-6 text-foreground">Skills & Expertise</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {skills.map((skill) => (
+              <div key={skill.name} className="bg-secondary/50 p-4 rounded-lg flex items-start gap-3">
+                <span className="text-2xl">{skill.icon}</span>
+                <div>
+                  <div className="font-medium text-foreground">{skill.name}</div>
+                  <div className="text-xs text-primary font-medium mt-1">{skill.level}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -421,10 +458,19 @@ export default function Portfolio() {
             <h4 className="text-lg font-semibold text-foreground">Get in touch</h4>
             <p className="mt-2 text-sm text-muted">Open to full-time and contract roles: Python Developer, Data Analyst, MLOps, LLMOps.</p>
 
-            <div className="mt-4 space-y-2 text-sm text-muted">
-              <div>GitHub: <a href="https://github.com/santoshkitkare" target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">github.com/santoshkitkare</a></div>
-              <div>LinkedIn: <a href="https://www.linkedin.com/in/santosh-itkare-56993a38/" target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">linkedin.com/in/santosh-itkare-56993a38</a></div>
-              <div>Email: <a href="mailto:santoshkitkare@gmail.com" className="text-indigo-600 dark:text-indigo-400 hover:underline">santoshkitkare@gmail.com</a></div>
+            <div className="mt-4 space-y-3 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">📂</span>
+                <a href="https://github.com/santoshkitkare" target="_blank" rel="noreferrer" className="text-primary hover:underline">github.com/santoshkitkare</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xl">💼</span>
+                <a href="https://www.linkedin.com/in/santosh-itkare-56993a38/" target="_blank" rel="noreferrer" className="text-primary hover:underline">linkedin.com/in/santosh-itkare-56993a38</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xl">📧</span>
+                <a href="mailto:santoshkitkare@gmail.com" className="text-primary hover:underline">santoshkitkare@gmail.com</a>
+              </div>
             </div>
           </div>
 
@@ -443,7 +489,7 @@ export default function Portfolio() {
                 <textarea name="message" rows={4} required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
               </div>
               <div className="flex items-center gap-3">
-                <button type="submit" className="px-4 py-2 bg-indigo-600 dark:bg-indigo-500 text-white rounded hover:bg-indigo-700 dark:hover:bg-indigo-600">Send</button>
+                <button type="submit" className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90 transition-opacity">Send Message</button>
                 <small className="text-xs text-muted">{status || `Or email me directly at santoshkitkare@gmail.com`}</small>
               </div>
             </form>
