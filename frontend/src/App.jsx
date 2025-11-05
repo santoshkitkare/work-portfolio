@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API_URL } from './config';
 
 // Single-file React component portfolio
@@ -7,6 +7,16 @@ import { API_URL } from './config';
 // - Contact form posts to /api/contact (implement serverless handler to send email via SMTP or an API)
 
 export default function Portfolio() {
+  const [darkMode, setDarkMode] = useState(true);
+  
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   const name = 'Santosh Itkare';
   const title = 'Senior Python Developer • MLOps & LLMOps Engineer';
   const tagline = 'Building production-grade ML systems, automations, and LLM-driven developer tools.';
@@ -114,10 +124,21 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased transition-colors">
+      {/* Theme Toggle */}
+      <div className="fixed top-4 right-4 z-50">
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+          aria-label="Toggle theme"
+        >
+          {darkMode ? '🌞' : '🌙'}
+        </button>
+      </div>
+
       <header className="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold">{name}</h1>
+          <h1 className="text-2xl font-semibold dark:text-white">{name}</h1>
           <p className="text-sm text-gray-600">{title}</p>
         </div>
         <nav className="space-x-4 text-sm">
@@ -145,22 +166,22 @@ export default function Portfolio() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow p-6">
-          <h3 className="font-semibold">Quick Stats</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+          <h3 className="font-semibold dark:text-white">Quick Stats</h3>
           <ul className="mt-4 grid grid-cols-2 gap-4 text-sm">
-            <li className="border p-3 rounded">20+ years software dev</li>
-            <li className="border p-3 rounded">5+ years Python / AI</li>
-            <li className="border p-3 rounded">ML production & MLOps</li>
-            <li className="border p-3 rounded">AWS, Docker, CI/CD</li>
+            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">20+ years software dev</li>
+            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">5+ years Python / AI</li>
+            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">ML production & MLOps</li>
+            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">AWS, Docker, CI/CD</li>
           </ul>
         </div>
       </section>
 
       {/* ABOUT */}
       <section id="about" className="max-w-6xl mx-auto px-6 py-10">
-        <div className="bg-white rounded-2xl shadow p-8">
-          <h3 className="text-2xl font-semibold">About Me</h3>
-          <p className="mt-4 text-gray-700">I am a seasoned software engineer with deep expertise in Python and a strong background in embedded systems. Over two decades of engineering experience, I have transitioned into building production-ready machine learning systems and MLOps pipelines. I architect scalable solutions, deploy models using robust CI/CD practices, and design automation that reduces time-to-production. I have hands-on experience with PyTorch, TensorFlow, LangChain, LangGraph, and modern LLM tooling. I pair technical leadership with mentorship—guiding teams to deliver reliable, maintainable ML-driven products.</p>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-8">
+          <h3 className="text-2xl font-semibold dark:text-white">About Me</h3>
+          <p className="mt-4 text-gray-700 dark:text-gray-300">I am a seasoned software engineer with deep expertise in Python and a strong background in embedded systems. Over two decades of engineering experience, I have transitioned into building production-ready machine learning systems and MLOps pipelines. I architect scalable solutions, deploy models using robust CI/CD practices, and design automation that reduces time-to-production. I have hands-on experience with PyTorch, TensorFlow, LangChain, LangGraph, and modern LLM tooling. I pair technical leadership with mentorship—guiding teams to deliver reliable, maintainable ML-driven products.</p>
 
           <div className="mt-6">
             <h4 className="font-medium">Core focus</h4>
@@ -174,9 +195,9 @@ export default function Portfolio() {
         <h3 className="text-xl font-semibold mb-4">Skills & Expertise</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {skills.map((s) => (
-            <div key={s} className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-between">
-              <span className="text-sm font-medium">{s}</span>
-              <span className="text-xs text-gray-500">Senior</span>
+            <div key={s} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm flex items-center justify-between">
+              <span className="text-sm font-medium dark:text-white">{s}</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">Senior</span>
             </div>
           ))}
         </div>
