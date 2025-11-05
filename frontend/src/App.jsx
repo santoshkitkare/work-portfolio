@@ -250,17 +250,25 @@ export default function Portfolio() {
     };
 
     try {
-      const response = await fetch(`${API_URL}/api/contact`, {
+      const url = `${API_URL || ''}/api/contact`;
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
-      setStatus(result.message);
+      if (!response.ok) {
+        const text = await response.text().catch(() => '');
+        console.error('Contact API error', response.status, text, { url });
+        setStatus(`Failed to send message: ${response.status} ${text}`);
+        return;
+      }
+
+      const result = await response.json().catch(() => ({}));
+      setStatus(result.message || 'Message sent successfully.');
     } catch (err) {
-      console.error(err);
-      setStatus('Failed to send message.');
+      console.error('Contact request failed', err);
+      setStatus(`Failed to send message: ${err.message}`);
     }
   };
 
@@ -613,15 +621,15 @@ export default function Portfolio() {
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
                 <label className="text-sm text-muted">Name</label>
-                <input name="name" required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
+                <input name="name" required className="w-full mt-1 p-2 border border-border dark:bg-card text-black rounded" />
               </div>
               <div>
                 <label className="text-sm text-muted">Email</label>
-                <input name="email" type="email" required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
+                <input name="email" type="email" required className="w-full mt-1 p-2 border border-border dark:bg-card text-black rounded" />
               </div>
               <div>
                 <label className="text-sm text-muted">Message</label>
-                <textarea name="message" rows={4} required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
+                <textarea name="message" rows={4} required className="w-full mt-1 p-2 border border-border dark:bg-card text-black rounded" />
               </div>
               <div className="flex items-center gap-3">
                 <button type="submit" className="px-4 py-2 border border-border rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity">Send Message</button>
