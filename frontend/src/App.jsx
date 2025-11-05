@@ -8,6 +8,7 @@ import { API_URL } from './config';
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(true);
+  const [expandedProjects, setExpandedProjects] = useState({});
   
   useEffect(() => {
     if (darkMode) {
@@ -39,27 +40,60 @@ export default function Portfolio() {
   // Projects pulled from GitHub (public repos) — update descriptions and links as needed
   const projects = [
     {
-      title: 'Parts Prediction (Parts Prediction Service)',
-      desc: 'End-to-end parts prediction pipeline: problem classification, cause analysis, and parts recommendation. Deployed with Docker, AWS, and automated CI/CD.',
-      tech: ['Python', 'PyTorch', 'FastAPI', 'Docker', 'AWS'],
+      title: 'Parts Prediction Service',
+      company: 'Bruviti',
+      shortDesc: 'End-to-end parts prediction pipeline for appliance repairs using ML and LLMs.',
+      desc: 'Built an advanced prediction system that combines machine learning and LLMs to analyze repair problems and recommend parts.',
+      details: [
+        'Developed deep learning models for parts prediction using historical warranty data',
+        'Integrated GPT-4 and Claude for natural language problem analysis',
+        'Built automated training pipelines for diverse appliance types',
+        'Implemented async workflows using AWS Lambda and RabbitMQ',
+        'Deployed with Docker and AWS, with automated CI/CD pipeline'
+      ],
+      tech: ['Python', 'PyTorch', 'FastAPI', 'Docker', 'AWS', 'LLMs'],
       url: '#'
     },
     {
-      title: 'LLMOps (llmops)',
-      desc: 'Research & proof-of-concept notebooks around evaluation and orchestration for LLM-powered systems.',
-      tech: ['Python', 'Jupyter', 'LLM Tooling'],
+      title: 'LLMOps Research',
+      company: 'Personal Project',
+      shortDesc: 'Research and POC notebooks for LLM evaluation and orchestration systems.',
+      desc: 'Collection of research notebooks and implementations focusing on LLM evaluation metrics, orchestration patterns, and best practices.',
+      details: [
+        'Implemented various LLM evaluation frameworks and metrics',
+        'Created orchestration patterns for complex LLM workflows',
+        'Built example implementations using LangChain and LangGraph',
+        'Documented best practices for production LLM systems'
+      ],
+      tech: ['Python', 'Jupyter', 'LangChain', 'LangGraph'],
       url: 'https://github.com/santoshkitkare/llmops'
     },
     {
       title: 'AI Support Ticket Classifier',
-      desc: 'Streamlit app to auto-tag support tickets using a generative model to improve triage and routing.',
-      tech: ['Python', 'Streamlit', 'NLP'],
+      company: 'Personal Project',
+      shortDesc: 'ML-powered system for automatic support ticket classification and routing.',
+      desc: 'Streamlit application that uses generative AI to analyze and auto-tag support tickets for improved triage efficiency.',
+      details: [
+        'Built ML models for ticket classification and priority prediction',
+        'Implemented automated tagging system using NLP',
+        'Created intuitive Streamlit interface for ticket analysis',
+        'Integrated with existing ticketing systems via APIs'
+      ],
+      tech: ['Python', 'Streamlit', 'NLP', 'Machine Learning'],
       url: 'https://github.com/santoshkitkare/ai-support-ticket-classifier'
     },
     {
       title: 'Car Service Booking API',
-      desc: 'REST API for bookings with slot management — FastAPI/Flask + DynamoDB/Postgres (POC).',
-      tech: ['FastAPI', 'DynamoDB', 'Postgres'],
+      company: 'Personal Project',
+      shortDesc: 'FastAPI-based booking system with intelligent slot management.',
+      desc: 'REST API service for managing car service bookings with smart slot allocation and database integration.',
+      details: [
+        'Designed RESTful API using FastAPI/Flask',
+        'Implemented intelligent slot management system',
+        'Created flexible database schema for DynamoDB/Postgres',
+        'Added automated testing and documentation'
+      ],
+      tech: ['FastAPI', 'DynamoDB', 'Postgres', 'REST APIs'],
       url: 'https://github.com/santoshkitkare/car-service-booking-app'
     }
   ];
