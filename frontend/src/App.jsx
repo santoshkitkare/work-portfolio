@@ -225,12 +225,12 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased transition-colors">
+    <div className="min-h-screen bg-background text-foreground antialiased transition-colors">
       {/* Theme Toggle */}
       <div className="fixed top-4 right-4 z-50">
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+          className="p-2 rounded-lg bg-popover text-foreground hover:opacity-90 transition-colors"
           aria-label="Toggle theme"
         >
           {darkMode ? '🌞' : '🌙'}
@@ -239,8 +239,8 @@ export default function Portfolio() {
 
       <header className="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold dark:text-white">{name}</h1>
-          <p className="text-sm text-gray-600">{title}</p>
+          <h1 className="text-2xl font-semibold text-foreground">{name}</h1>
+          <p className="text-sm text-muted">{title}</p>
         </div>
         <nav className="space-x-4 text-sm">
           <a href="#about" className="hover:underline">About</a>
@@ -255,49 +255,50 @@ export default function Portfolio() {
         <div>
           <p className="text-sm uppercase text-indigo-600 font-medium">Hi, I'm</p>
           <h2 className="text-4xl font-bold leading-tight">{name}</h2>
-          <p className="mt-4 text-lg text-gray-700">{tagline}</p>
+          <p className="mt-4 text-lg text-muted">{tagline}</p>
 
           <div className="mt-6 flex gap-3">
             <a href="#projects" className="inline-block px-5 py-3 bg-indigo-600 text-white rounded-lg shadow hover:opacity-95">View Work</a>
-            <a href="#contact" className="inline-block px-5 py-3 border border-gray-300 rounded-lg">Contact Me</a>
+            <a href="#contact" className="inline-block px-5 py-3 border border-border rounded-lg">Contact Me</a>
           </div>
 
-          <div className="mt-8 text-sm text-gray-600">
+          <div className="mt-8 text-sm text-muted">
             <p><strong>Positioning:</strong> Python Developer, Data Analyst, MLOps & LLMOps Engineer — experienced in production ML, model ops, and generative AI tooling.</p>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
-          <h3 className="font-semibold dark:text-white">Quick Stats</h3>
+        <div className="bg-card rounded-2xl shadow p-6">
+          <h3 className="font-semibold text-foreground">Quick Stats</h3>
           <ul className="mt-4 grid grid-cols-2 gap-4 text-sm">
-            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">20+ years software dev</li>
-            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">5+ years Python / AI</li>
-            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">Gen AI & MLOps</li>
-            <li className="border dark:border-gray-700 p-3 rounded dark:text-gray-300">AWS, Docker, GitHub Action, CI/CD</li>
+            <li className="border border-border p-3 rounded text-muted">20+ years software dev</li>
+            <li className="border border-border p-3 rounded text-muted">5+ years Python / AI</li>
+            <li className="border border-border p-3 rounded text-muted">Gen AI & MLOps</li>
+            <li className="border border-border p-3 rounded text-muted">AWS, Docker, GitHub Action, CI/CD</li>
           </ul>
         </div>
       </section>
 
       {/* ABOUT */}
       <section id="about" className="max-w-6xl mx-auto px-6 py-10">
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-8">
-          <h3 className="text-2xl font-semibold dark:text-white">About Me</h3>
-          <p className="mt-4 text-gray-700 dark:text-gray-300">I am a seasoned software engineer with deep expertise in Python and a strong background in embedded systems. Over two decades of engineering experience, I have transitioned into building production-ready machine learning systems and MLOps pipelines. I architect scalable solutions, deploy models using robust CI/CD practices, and design automation that reduces time-to-production. I have hands-on experience with PyTorch, TensorFlow, LangChain, LangGraph, and modern LLM tooling. I pair technical leadership with mentorship—guiding teams to deliver reliable, maintainable ML-driven products.</p>
+
+        <div className="bg-card rounded-2xl shadow p-8">
+          <h3 className="text-2xl font-semibold text-foreground">About Me</h3>
+          <p className="mt-4 text-muted">I am a seasoned software engineer with deep expertise in Python and a strong background in embedded systems. Over two decades of engineering experience, I have transitioned into building production-ready machine learning systems and MLOps pipelines. I architect scalable solutions, deploy models using robust CI/CD practices, and design automation that reduces time-to-production. I have hands-on experience with PyTorch, TensorFlow, LangChain, LangGraph, and modern LLM tooling. I pair technical leadership with mentorship—guiding teams to deliver reliable, maintainable ML-driven products.</p>
 
           <div className="mt-6">
             <h4 className="font-medium">Core focus</h4>
-            <p className="text-gray-600 text-sm mt-2">Generative AI, Agentic AI, LLM orchestration (LangChain/LangGraph), backend services in Python, production deployment, and cloud-native infrastructure.</p>
+            <p className="text-muted text-sm mt-2">Generative AI, Agentic AI, LLM orchestration (LangChain/LangGraph), backend services in Python, production deployment, and cloud-native infrastructure.</p>
           </div>
         </div>
       </section>
 
       {/* SKILLS */}
       <section className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-4 dark:text-white">Skills & Expertise</h3>
+        <h3 className="text-xl font-semibold mb-4 text-foreground">Skills & Expertise</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {skills.map((s) => (
-            <div key={s.name} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm flex items-center justify-between">
-              <span className="text-sm font-medium dark:text-white">{s.name}</span>
+            <div key={s.name} className="bg-card p-4 rounded-lg shadow-sm flex items-center justify-between">
+              <span className="text-sm font-medium text-foreground">{s.name}</span>
               <span className={`text-xs px-2 py-1 rounded ${
                 s.level === 'Senior' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' :
                 s.level === 'Intermediate' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300' :
@@ -311,23 +312,23 @@ export default function Portfolio() {
 
       {/* PROJECTS */}
       <section id="projects" className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-6 dark:text-white">Selected Projects & Case Studies</h3>
+        <h3 className="text-xl font-semibold mb-6 text-foreground">Selected Projects & Case Studies</h3>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((p) => (
-            <article key={p.title} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 hover:shadow-lg transition">
+            <article key={p.title} className="bg-card rounded-lg shadow p-6 hover:shadow-lg transition">
               <div className="flex justify-between items-start">
                 <div>
                   <h4 className="text-lg font-semibold">
-                    <a href={p.url} target="_blank" rel="noreferrer" className="hover:underline dark:text-white">{p.title}</a>
+                    <a href={p.url} target="_blank" rel="noreferrer" className="hover:underline text-foreground">{p.title}</a>
                   </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{p.company}</p>
+                  <p className="text-sm text-muted">{p.company}</p>
                 </div>
               </div>
               
-              <p className="mt-3 text-gray-600 dark:text-gray-300">{p.shortDesc}</p>
+              <p className="mt-3 text-muted">{p.shortDesc}</p>
               
               <div className="mt-3">
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted">
                   {expandedProjects[p.title] ? p.desc : p.desc.slice(0, 150) + (p.desc.length > 150 ? '...' : '')}
                 </p>
                 {p.desc.length > 150 && (
@@ -341,7 +342,7 @@ export default function Portfolio() {
               </div>
 
               {expandedProjects[p.title] && (
-                <ul className="mt-3 space-y-1 list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+                <ul className="mt-3 space-y-1 list-disc list-inside text-sm text-muted">
                   {p.details.map((detail, index) => (
                     <li key={index}>{detail}</li>
                   ))}
@@ -350,7 +351,7 @@ export default function Portfolio() {
               
               <div className="mt-4 flex-wrap flex gap-2">
                 {p.tech.map((t) => (
-                  <span key={t} className="text-xs border dark:border-gray-700 dark:text-gray-300 rounded px-2 py-1">{t}</span>
+                  <span key={t} className="text-xs border border-border text-muted rounded px-2 py-1">{t}</span>
                 ))}
               </div>
             </article>
@@ -360,22 +361,22 @@ export default function Portfolio() {
 
       {/* EXPERIENCE TIMELINE */}
       <section id="experience" className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-6 dark:text-white">Experience</h3>
+        <h3 className="text-xl font-semibold mb-6 text-foreground">Experience</h3>
         <div className="space-y-4">
           {timeline.map((t) => (
-            <div key={t.role} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+            <div key={t.role} className="bg-card rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-semibold dark:text-white">{t.role}</h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{t.company}</p>
-                  <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">{t.period}</p>
+                  <h4 className="font-semibold text-foreground">{t.role}</h4>
+                  <p className="text-sm text-muted">{t.company}</p>
+                  <p className="text-sm text-muted mt-1">{t.period}</p>
                 </div>
               </div>
               
-              <p className="mt-3 text-gray-600 dark:text-gray-300">{t.shortDesc}</p>
+              <p className="mt-3 text-muted">{t.shortDesc}</p>
               
               <div className="mt-3">
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted">
                   {expandedProjects[t.role] ? t.desc : t.desc.slice(0, 150) + (t.desc.length > 150 ? '...' : '')}
                 </p>
                 {t.desc.length > 150 && (
@@ -389,7 +390,7 @@ export default function Portfolio() {
               </div>
 
               {expandedProjects[t.role] && (
-                <ul className="mt-4 space-y-2 list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+                <ul className="mt-4 space-y-2 list-disc list-inside text-sm text-muted">
                   {t.bullets.map((b, i) => (
                     <li key={i} className="leading-relaxed">{b}</li>
                   ))}
@@ -402,26 +403,25 @@ export default function Portfolio() {
 
       {/* TESTIMONIALS */}
       <section className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-6 dark:text-white">Recommendations</h3>
+        <h3 className="text-xl font-semibold mb-6 text-foreground">Recommendations</h3>
         <div className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
-            <blockquote key={i} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-              <p className="text-gray-700 dark:text-gray-300 italic">"{t.quote}"</p>
-              <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">— {t.who}</p>
+            <blockquote key={i} className="bg-card p-6 rounded-lg shadow">
+              <p className="text-muted italic">"{t.quote}"</p>
+              <p className="mt-4 text-sm text-muted">— {t.who}</p>
             </blockquote>
           ))}
         </div>
-        {/* <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">Note: LinkedIn often blocks automated scraping. Paste your exact recommendation quotes into the testimonials array in this file for best results.</p> */}
       </section>
 
       {/* CONTACT */}
       <footer id="contact" className="max-w-6xl mx-auto px-6 py-12">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 grid md:grid-cols-2 gap-6">
+        <div className="bg-card rounded-lg shadow p-6 grid md:grid-cols-2 gap-6">
           <div>
-            <h4 className="text-lg font-semibold dark:text-white">Get in touch</h4>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">Open to full-time and contract roles: Python Developer, Data Analyst, MLOps, LLMOps.</p>
+            <h4 className="text-lg font-semibold text-foreground">Get in touch</h4>
+            <p className="mt-2 text-sm text-muted">Open to full-time and contract roles: Python Developer, Data Analyst, MLOps, LLMOps.</p>
 
-            <div className="mt-4 space-y-2 text-sm dark:text-gray-300">
+            <div className="mt-4 space-y-2 text-sm text-muted">
               <div>GitHub: <a href="https://github.com/santoshkitkare" target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">github.com/santoshkitkare</a></div>
               <div>LinkedIn: <a href="https://www.linkedin.com/in/santosh-itkare-56993a38/" target="_blank" rel="noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">linkedin.com/in/santosh-itkare-56993a38</a></div>
               <div>Email: <a href="mailto:santoshkitkare@gmail.com" className="text-indigo-600 dark:text-indigo-400 hover:underline">santoshkitkare@gmail.com</a></div>
@@ -431,26 +431,26 @@ export default function Portfolio() {
           <div>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="text-sm dark:text-gray-300">Name</label>
-                <input name="name" required className="w-full mt-1 p-2 border dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded" />
+                <label className="text-sm text-muted">Name</label>
+                <input name="name" required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
               </div>
               <div>
-                <label className="text-sm dark:text-gray-300">Email</label>
-                <input name="email" type="email" required className="w-full mt-1 p-2 border dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded" />
+                <label className="text-sm text-muted">Email</label>
+                <input name="email" type="email" required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
               </div>
               <div>
-                <label className="text-sm dark:text-gray-300">Message</label>
-                <textarea name="message" rows={4} required className="w-full mt-1 p-2 border dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded" />
+                <label className="text-sm text-muted">Message</label>
+                <textarea name="message" rows={4} required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
               </div>
               <div className="flex items-center gap-3">
                 <button type="submit" className="px-4 py-2 bg-indigo-600 dark:bg-indigo-500 text-white rounded hover:bg-indigo-700 dark:hover:bg-indigo-600">Send</button>
-                <small className="text-xs text-gray-500 dark:text-gray-400">{status || `Or email me directly at santoshkitkare@gmail.com`}</small>
+                <small className="text-xs text-muted">{status || `Or email me directly at santoshkitkare@gmail.com`}</small>
               </div>
             </form>
           </div>
         </div>
 
-        <p className="mt-6 text-center text-xs text-gray-400 dark:text-gray-500">© {new Date().getFullYear()} Santosh Itkare — Portfolio. Built with React + Tailwind.</p>
+        <p className="mt-6 text-center text-xs text-muted">© {new Date().getFullYear()} Santosh Itkare — Portfolio. Built with React + Tailwind.</p>
       </footer>
     </div>
   );
