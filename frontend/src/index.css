@@ -5,19 +5,19 @@
 /* Color tokens copied/adapted from EmergentCode project to provide a consistent "white" theme */
 @layer base {
 	:root {
-		--background: 0 0% 100%;
-		--foreground: 0 0% 3.9%;
-		--card: 0 0% 100%;
-		--card-foreground: 0 0% 3.9%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 0 0% 3.9%;
-		--primary: 0 0% 9%;
-		--primary-foreground: 0 0% 98%;
-		--secondary: 0 0% 96.1%;
-		--secondary-foreground: 0 0% 9%;
-		--muted: 0 0% 96.1%;
-		--muted-foreground: 0 0% 45.1%;
-		--accent: 0 0% 96.1%;
+		--background: 204 94% 94%;
+		--foreground: 204 80% 16%;
+		--card: 204 94% 97%;
+		--card-foreground: 204 80% 16%;
+		--popover: 204 94% 97%;
+		--popover-foreground: 204 80% 16%;
+		--primary: 204 80% 30%;
+		--primary-foreground: 204 94% 97%;
+		--secondary: 204 90% 90%;
+		--secondary-foreground: 204 80% 20%;
+		--muted: 204 90% 92%;
+		--muted-foreground: 204 60% 45%;
+		--accent: 204 85% 88%;
 		--accent-foreground: 0 0% 9%;
 		--destructive: 0 84.2% 60.2%;
 		--destructive-foreground: 0 0% 98%;
