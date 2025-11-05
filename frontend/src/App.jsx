@@ -322,11 +322,11 @@ export default function Portfolio() {
           </div>
           <div className="relative">
             <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-border"></div>
-            <div className="space-y-8">
+            <div className="space-y-4">
               {education.map((edu, i) => (
                 <div key={i} className="relative pl-8">
-                  <div className="absolute left-0 top-2 w-6 h-6 rounded-full border-4 border-background bg-primary"></div>
-                  <div className="bg-secondary/20 backdrop-blur-sm rounded-xl p-6 hover:bg-secondary/30 transition-colors">
+                  <div className="absolute left-0 top-2 w-4 h-4 rounded-full border-4 border-background bg-primary"></div>
+                  <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-4 hover:bg-secondary/30 transition-colors">
                     <h4 className="font-semibold text-lg text-foreground">{edu.degree}</h4>
                     <p className="text-primary/90 mt-1 font-medium">{edu.institution}</p>
                     <div className="mt-3 flex items-center gap-4 text-sm">
@@ -343,13 +343,28 @@ export default function Portfolio() {
         {/* Skills Section */}
         <div className="bg-card rounded-2xl shadow-sm p-6">
           <h3 className="text-xl font-semibold mb-6 text-foreground">Skills & Expertise</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
             {skills.map((skill) => (
-              <div key={skill.name} className="bg-secondary/50 p-4 rounded-lg flex items-start gap-3">
-                <span className="text-2xl">{skill.icon}</span>
+              <div key={skill.name} className="bg-secondary/50 p-3 rounded-lg flex items-center gap-2">
+                <img 
+                  src={`https://raw.githubusercontent.com/devicons/devicon/master/icons/${skill.name.toLowerCase()}/${skill.name.toLowerCase()}-original.svg`}
+                  alt={skill.name}
+                  className="w-5 h-5"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://api.iconify.design/${
+                      skill.name.toLowerCase().includes('aws') ? 'logos:aws' :
+                      skill.name.toLowerCase().includes('docker') ? 'logos:docker-icon' :
+                      skill.name.toLowerCase().includes('fastapi') ? 'simple-icons:fastapi' :
+                      skill.name.toLowerCase().includes('terraform') ? 'logos:terraform-icon' :
+                      skill.name.toLowerCase().includes('jenkins') ? 'devicon:jenkins' :
+                      'carbon:skill-level'
+                    }.svg`;
+                  }}
+                />
                 <div>
-                  <div className="font-medium text-foreground">{skill.name}</div>
-                  <div className="text-xs text-primary font-medium mt-1">{skill.level}</div>
+                  <div className="font-medium text-foreground text-sm">{skill.name}</div>
+                  <div className="text-xs text-primary font-medium">{skill.level}</div>
                 </div>
               </div>
             ))}
@@ -403,6 +418,18 @@ export default function Portfolio() {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-12 bg-card rounded-xl shadow-sm p-8 text-center">
+          <h3 className="text-2xl font-semibold text-foreground mb-3">Ready to Build Something Amazing?</h3>
+          <p className="text-muted mb-6">Let's discuss how these skills can drive your next AI/ML project to success</p>
+          <a 
+            href="#contact" 
+            className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors border border-primary shadow-sm"
+          >
+            Start a Conversation
+          </a>
         </div>
       </section>
 
@@ -479,18 +506,43 @@ export default function Portfolio() {
             <p className="mt-2 text-sm text-muted">Open to full-time and contract roles: Python Developer, Data Analyst, MLOps, LLMOps.</p>
 
             <div className="mt-4 space-y-3 text-sm">
-              <div className="flex items-center gap-2">
-                <span className="text-xl">📂</span>
-                <a href="https://github.com/santoshkitkare" target="_blank" rel="noreferrer" className="text-primary hover:underline">github.com/santoshkitkare</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl">💼</span>
-                <a href="https://www.linkedin.com/in/santosh-itkare-56993a38/" target="_blank" rel="noreferrer" className="text-primary hover:underline">linkedin.com/in/santosh-itkare-56993a38</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl">📧</span>
-                <a href="mailto:santoshkitkare@gmail.com" className="text-primary hover:underline">santoshkitkare@gmail.com</a>
-              </div>
+              <a 
+                href="https://github.com/santoshkitkare" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="flex items-center gap-3 px-4 py-2 bg-card hover:bg-secondary/50 border border-border rounded-lg transition-colors group"
+              >
+                <img 
+                  src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg"
+                  alt="GitHub"
+                  className="w-5 h-5 opacity-80 group-hover:opacity-100"
+                />
+                <span className="text-primary group-hover:text-primary-foreground">github.com/santoshkitkare</span>
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/santosh-itkare-56993a38/" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="flex items-center gap-3 px-4 py-2 bg-card hover:bg-secondary/50 border border-border rounded-lg transition-colors group"
+              >
+                <img 
+                  src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/linkedin.svg"
+                  alt="LinkedIn"
+                  className="w-5 h-5 opacity-80 group-hover:opacity-100"
+                />
+                <span className="text-primary group-hover:text-primary-foreground">linkedin.com/in/santosh-itkare-56993a38</span>
+              </a>
+              <a 
+                href="mailto:santoshkitkare@gmail.com" 
+                className="flex items-center gap-3 px-4 py-2 bg-card hover:bg-secondary/50 border border-border rounded-lg transition-colors group"
+              >
+                <img 
+                  src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gmail.svg"
+                  alt="Email"
+                  className="w-5 h-5 opacity-80 group-hover:opacity-100"
+                />
+                <span className="text-primary group-hover:text-primary-foreground">santoshkitkare@gmail.com</span>
+              </a>
             </div>
           </div>
 
