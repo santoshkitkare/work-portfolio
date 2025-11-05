@@ -55,18 +55,19 @@ export default function Portfolio() {
       url: '#'
     },
     {
-      title: 'LLMOps Research',
+      title: 'Document Portal',
       company: 'Personal Project',
-      shortDesc: 'Research and POC notebooks for LLM evaluation and orchestration systems.',
-      desc: 'Collection of research notebooks and implementations focusing on LLM evaluation metrics, orchestration patterns, and best practices.',
+      shortDesc: 'Document Analysis, Chat & Comparison Portal with Advanced RAG',
+      desc: 'Developed as part of Krish Naik Academy’s GenAI & LLMOps program, this project demonstrates a complete end-to-end AI-powered document intelligence portal. It enables users to upload, analyze, chat with, and compare documents using Advanced RAG (Retrieval-Augmented Generation) pipelines. The project combines backend AI orchestration with an interactive frontend and scalable cloud deployment.',
       details: [
-        'Implemented various LLM evaluation frameworks and metrics',
-        'Created orchestration patterns for complex LLM workflows',
-        'Built example implementations using LangChain and LangGraph',
-        'Documented best practices for production LLM systems'
+        'Built semantic search and chat interfaces for single and multiple document interactions.',
+        'Designed document comparison logic with similarity and diff detection features.',
+        'Optimized performance using local/quantized LLMs, vLLM, and cache-augmented generation (CAG).',
+        'Developed FastAPI backend and Streamlit-based frontend for end-to-end user experience.',
+        'Deployed using AWS Fargate with CI/CD automation (GitHub Actions) and containerized architecture.'
       ],
-      tech: ['Python', 'Jupyter', 'LangChain', 'LangGraph'],
-      url: 'https://github.com/santoshkitkare/llmops'
+      tech: ['Python', 'Jupyter', 'GenAI', 'AWS Fargate', 'FastAPI', 'Streamlit'],
+      url: 'https://github.com/santoshkitkare/llmops/tree/main/document_portal'
     },
     {
       title: 'AI Support Ticket Classifier',
@@ -79,22 +80,8 @@ export default function Portfolio() {
         'Created intuitive Streamlit interface for ticket analysis',
         'Integrated with existing ticketing systems via APIs'
       ],
-      tech: ['Python', 'Streamlit', 'NLP', 'Machine Learning'],
+      tech: ['Python', 'Streamlit', 'Gen AI', 'AWS(API Gateway, Lambda, DynamoDB, Bedrock, OpenAI)'],
       url: 'https://github.com/santoshkitkare/ai-support-ticket-classifier'
-    },
-    {
-      title: 'Car Service Booking API',
-      company: 'Personal Project',
-      shortDesc: 'FastAPI-based booking system with intelligent slot management.',
-      desc: 'REST API service for managing car service bookings with smart slot allocation and database integration.',
-      details: [
-        'Designed RESTful API using FastAPI/Flask',
-        'Implemented intelligent slot management system',
-        'Created flexible database schema for DynamoDB/Postgres',
-        'Added automated testing and documentation'
-      ],
-      tech: ['FastAPI', 'DynamoDB', 'Postgres', 'REST APIs'],
-      url: 'https://github.com/santoshkitkare/car-service-booking-app'
     }
   ];
 
@@ -104,6 +91,8 @@ export default function Portfolio() {
       role: 'Senior Python Developer (AI/ML)',
       company: 'NextBurb',
       period: 'Jun 2025 - August 2025',
+      shortDesc: 'Led AI/ML initiatives for real estate property analysis and recommendations platform.',
+      desc: 'Developed comprehensive AI solutions for property evaluation and automated data extraction systems to streamline real estate operations.',
       bullets: [
         'Developed AI/ML solutions to rate and recommend properties based on image quality, market comparison, school ratings, crime rates, and price appreciation trends.',
         'Automated property data extraction from MLS portals to identify high-value listings and top-performing agents, enabling faster sales and better buyer recommendations.'
@@ -113,59 +102,75 @@ export default function Portfolio() {
       role: 'Senior Data Scientist',
       company: 'Bruviti (K2 Technosoft India Pvt. Ltd)',
       period: 'Oct 2022 - April 2025',
+      shortDesc: 'Led AI/ML solutions development for appliance service optimization using LLMs and advanced analytics.',
+      desc: 'Spearheaded the development of LLM-powered systems and ML pipelines for appliance service operations, focusing on parts prediction and diagnostic automation.',
       bullets: [
         'Worked on multiple AI/ML-driven solutions aimed at optimizing appliance service operations for a major home appliance manufacturer.',
         'Delivered advanced LLM-based recommendation systems, time-series demand forecasting, and semantic search solutions.',
         'Automated model pipelines and deployed services using AWS and containerized infrastructure.',
-        '- Led development of an LLM-based Parts Recommendation System using GPT-4 and Claude to analyze problem descriptions and suggest likely repair parts.',
-        '- Designed pipelines for warranty data ingestion, model inference, and part-BOM mapping for enhanced precision.',
-        '- Built forecasting models (ARIMA, SARIMAX, Prophet) to predict demand for spare parts, aiding supply chain planning.',
-        '- Developed internal FastAPI services with HTML UI for diagnostics and technician support.',
-        '- Used Docker, AWS Lambda, and RabbitMQ for scalable, event-driven processing.',
-        '- Improved diagnostic accuracy by processing structured/unstructured claim data and applying explainable ML models.',
-        '- Effectively used Cursor AI and ChatGPT as development copilots for rapid code generation, testing snippets, and optimizing workflows—significantly accelerating delivery timelines and reducing debugging effort.'
+        'Led development of an LLM-based Parts Recommendation System using GPT-4 and Claude to analyze problem descriptions and suggest likely repair parts.',
+        'Designed pipelines for warranty data ingestion, model inference, and part-BOM mapping for enhanced precision.',
+        'Built forecasting models (ARIMA, SARIMAX, Prophet) to predict demand for spare parts, aiding supply chain planning.',
+        'Developed internal FastAPI services with HTML UI for diagnostics and technician support.',
+        'Used Docker, AWS Lambda, and RabbitMQ for scalable, event-driven processing.',
+        'Improved diagnostic accuracy by processing structured/unstructured claim data and applying explainable ML models.',
+        'Effectively used Cursor AI and ChatGPT as development copilots for rapid code generation, testing snippets, and optimizing workflows—significantly accelerating delivery timelines and reducing debugging effort.'
       ]
     },
     {
       role: 'Python Developer - AI/ML',
       company: 'Bruviti (K2 Technosoft India Pvt. Ltd)',
       period: 'Mar 2020 — September 2022',
+      shortDesc: 'Built and deployed ML-powered parts prediction system for appliance repairs.',
+      desc: 'Led the development of an advanced parts prediction system using deep learning, improving first-time fix rates and technician efficiency.',
       bullets: [
-        'Developed and deployed a Parts Prediction System using deep learning models trained on historical warranty claim data. Aimed to enhance first-time fix rates by predicting required parts in advance and improving technician readiness.',
-        '- Developed deep learning models trained on warranty claims for part prediction and repair planning.',
-        '- Built automated training pipelines for neural network-based models, handling diverse appliance types.',
-        '- Integrated model predictions with service portal APIs for technician tools.',
-        '- Implemented asynchronous workflows using AWS Lambda and RabbitMQ.'
+        'Developed and deployed a Parts Prediction System using deep learning models trained on historical warranty claim data.',
+        'Developed deep learning models trained on warranty claims for part prediction and repair planning.',
+        'Built automated training pipelines for neural network-based models, handling diverse appliance types.',
+        'Integrated model predictions with service portal APIs for technician tools.',
+        'Implemented asynchronous workflows using AWS Lambda and RabbitMQ.'
       ]
     },
     {
       role: 'Technical Lead',
       company: 'Bruviti (K2 Technosoft India Pvt. Ltd)',
       period: 'Oct 2013 — Feb 2020',
+      shortDesc: 'Led embedded systems development for Renesas Synergy Platform.',
+      desc: 'Specialized in cross-compilation and framework development for embedded systems, focusing on the Renesas Synergy Platform.',
       bullets: [
-        'As an Embedded System Programmer, worked on Cross compilation, Design and Development of different Framework for Renesas Synergy Platform.'
+        'Led cross-compilation and framework development initiatives',
+        'Designed and implemented embedded system architectures',
+        'Optimized performance for resource-constrained environments',
+        'Mentored team members in embedded systems development'
       ]
     },
     {
       role: 'Technical Lead',
       company: 'Taraspan Solution Pvt. Ltd. Pune',
       period: 'Nov 2022 - Oct 2013',
+      shortDesc: 'Led development of WiFi Access Point Controller features.',
+      desc: 'Managed technical aspects of WiFi Access Point Controller development, including feature design, analysis, and implementation.',
       bullets: [
-        'Working as Technical Lead, participation in design solution for new features, customer requirement analysis, development and bug fixing in WiFi Access Point Controller.'
+        'Led design and implementation of new features for WiFi Access Point Controller',
+        'Conducted customer requirement analysis and technical feasibility studies',
+        'Managed bug fixing and system optimization',
+        'Coordinated with cross-functional teams for feature delivery'
       ]
     },
     {
       role: 'Technical Lead',
       company: '2Wire IDC Pvt. Ltd. Pune',
       period: 'Apr 2015 - Oct 2012',
+      shortDesc: 'Led embedded systems development for networking and IoT devices.',
+      desc: 'Spearheaded development of embedded C-based systems, focusing on networking protocols and IoT device frameworks.',
       bullets: [
-        'Worked extensively on embedded C-based system development for networking and IoT devices. Designed and ported protocol stacks (TCP/IP, TR-069, 6LoWPAN), integrated RTOS (FreeRTOS, ThreadX), and built cellular and wireless frameworks for Renesas Synergy MCUs. Also contributed to system architecture, debugging, product releases, and mentoring junior engineers.',
-        '- Worked on C-based embedded systems for telecom and IoT products.',
-        '- Ported networking and device provisioning stacks (TCP/IP, TR-069) to multiple platforms.',
-        '- Built cellular and wireless frameworks (e.g., using NimbeLink, Quectel) for Renesas MCUs.',
-        '- Delivered TR-069 compliant solutions to global ISPs (AT&T, SingTel).',
-        '- Mentored junior engineers and contributed to cross-team architecture decisions.'
-
+        'Worked on C-based embedded systems for telecom and IoT products',
+        'Ported networking and device provisioning stacks (TCP/IP, TR-069) to multiple platforms',
+        'Built cellular and wireless frameworks (e.g., using NimbeLink, Quectel) for Renesas MCUs',
+        'Delivered TR-069 compliant solutions to global ISPs (AT&T, SingTel)',
+        'Mentored junior engineers and contributed to cross-team architecture decisions',
+        'Integrated RTOS (FreeRTOS, ThreadX) for embedded applications',
+        'Designed and implemented protocol stacks (TCP/IP, TR-069, 6LoWPAN)'
       ]
     }
   ];
@@ -310,8 +315,39 @@ export default function Portfolio() {
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((p) => (
             <article key={p.title} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 hover:shadow-lg transition">
-              <h4 className="text-lg font-semibold"><a href={p.url} target="_blank" rel="noreferrer" className="hover:underline dark:text-white">{p.title}</a></h4>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">{p.desc}</p>
+              <div className="flex justify-between items-start">
+                <div>
+                  <h4 className="text-lg font-semibold">
+                    <a href={p.url} target="_blank" rel="noreferrer" className="hover:underline dark:text-white">{p.title}</a>
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{p.company}</p>
+                </div>
+              </div>
+              
+              <p className="mt-3 text-gray-600 dark:text-gray-300">{p.shortDesc}</p>
+              
+              <div className="mt-3">
+                <p className="text-gray-600 dark:text-gray-300">
+                  {expandedProjects[p.title] ? p.desc : p.desc.slice(0, 150) + (p.desc.length > 150 ? '...' : '')}
+                </p>
+                {p.desc.length > 150 && (
+                  <button
+                    onClick={() => setExpandedProjects(prev => ({...prev, [p.title]: !prev[p.title]}))}
+                    className="text-indigo-600 dark:text-indigo-400 text-sm mt-1 hover:underline focus:outline-none"
+                  >
+                    {expandedProjects[p.title] ? 'Show less' : 'Read more'}
+                  </button>
+                )}
+              </div>
+
+              {expandedProjects[p.title] && (
+                <ul className="mt-3 space-y-1 list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+                  {p.details.map((detail, index) => (
+                    <li key={index}>{detail}</li>
+                  ))}
+                </ul>
+              )}
+              
               <div className="mt-4 flex-wrap flex gap-2">
                 {p.tech.map((t) => (
                   <span key={t} className="text-xs border dark:border-gray-700 dark:text-gray-300 rounded px-2 py-1">{t}</span>
@@ -332,12 +368,33 @@ export default function Portfolio() {
                 <div>
                   <h4 className="font-semibold dark:text-white">{t.role}</h4>
                   <p className="text-sm text-gray-500 dark:text-gray-400">{t.company}</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">{t.period}</p>
                 </div>
-                <div className="text-sm text-gray-400 dark:text-gray-500">{t.period}</div>
               </div>
-              <ul className="mt-3 list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
-                {t.bullets.map((b, i) => <li key={i}>{b}</li>)}
-              </ul>
+              
+              <p className="mt-3 text-gray-600 dark:text-gray-300">{t.shortDesc}</p>
+              
+              <div className="mt-3">
+                <p className="text-gray-600 dark:text-gray-300">
+                  {expandedProjects[t.role] ? t.desc : t.desc.slice(0, 150) + (t.desc.length > 150 ? '...' : '')}
+                </p>
+                {t.desc.length > 150 && (
+                  <button
+                    onClick={() => setExpandedProjects(prev => ({...prev, [t.role]: !prev[t.role]}))}
+                    className="text-indigo-600 dark:text-indigo-400 text-sm mt-1 hover:underline focus:outline-none"
+                  >
+                    {expandedProjects[t.role] ? 'Show less' : 'Read more'}
+                  </button>
+                )}
+              </div>
+
+              {expandedProjects[t.role] && (
+                <ul className="mt-4 space-y-2 list-disc list-inside text-sm text-gray-600 dark:text-gray-300">
+                  {t.bullets.map((b, i) => (
+                    <li key={i} className="leading-relaxed">{b}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
