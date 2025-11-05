@@ -45,3 +45,30 @@ def lambda_handler(event, context):
             'headers': _cors_headers(),
             'body': json.dumps({'message': 'Internal server error', 'error': str(e)})
         }
+        
+        
+# import json, os, smtplib
+# from email.message import EmailMessage
+
+# def lambda_handler(event, context):
+#     body = json.loads(event.get('body', '{}'))
+#     name, email, message = body.get('name'), body.get('email'), body.get('message')
+#     # print(event)
+
+#     # print(f"name: {name} email: {email} message: {message}")
+#     msg = EmailMessage()
+#     msg['Subject'] = f"Portfolio Contact from {name}"
+#     msg['From'] = os.environ['SMTP_USER']
+#     msg['To'] = os.environ['TO_EMAIL']
+#     msg['Cc'] = email
+#     msg.set_content(f"From: {name} <{email}>\n\n{message}")
+
+#     # print(f"name: {name} email: {email} message: {message}")
+
+#     with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+#         smtp.starttls()
+#         smtp.login(os.environ['SMTP_USER'], os.environ['SMTP_PASS'])
+#         smtp.send_message(msg)
+
+#     print("Email Send successfully")
+#     return { 'statusCode': 200, 'body': json.dumps({'message': 'Email sent successfully'}) }
