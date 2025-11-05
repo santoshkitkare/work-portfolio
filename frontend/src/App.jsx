@@ -7,7 +7,7 @@ import { API_URL } from './config';
 // - Contact form posts to /api/contact (implement serverless handler to send email via SMTP or an API)
 
 export default function Portfolio() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [expandedProjects, setExpandedProjects] = useState({});
   const [visibleExperiences, setVisibleExperiences] = useState(3);
   
@@ -276,7 +276,7 @@ export default function Portfolio() {
           <p className="mt-2 text-primary font-medium">{availability}</p>
 
           <div className="mt-6 flex gap-3">
-            <a href="#projects" className="inline-block px-5 py-3 bg-primary text-primary-foreground rounded-lg shadow hover:opacity-95">View Work</a>
+            <a href="#projects" className="inline-block px-5 py-3 border border-border rounded-lg bg-primary text-primary-foreground shadow hover:opacity-95">View Work</a>
             <a href="#contact" className="inline-block px-5 py-3 border border-border rounded-lg hover:bg-secondary hover:text-secondary-foreground transition-colors">Get In Touch</a>
           </div>
 
@@ -313,30 +313,26 @@ export default function Portfolio() {
       {/* EDUCATION & SKILLS */}
       <section className="max-w-6xl mx-auto px-6 py-10 space-y-10">
         {/* Education Section */}
-        <div className="bg-card rounded-2xl shadow-sm p-8">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="bg-primary/10 p-3 rounded-xl">
-              <span className="text-2xl">🎓</span>
-            </div>
-            <h3 className="text-xl font-semibold text-foreground">Education</h3>
+        <div className="bg-card/50 rounded-xl p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-primary text-xl">🎓</span>
+            <h3 className="text-lg font-semibold text-foreground">Education</h3>
           </div>
-          <div className="relative">
-            <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-border"></div>
-            <div className="space-y-4">
-              {education.map((edu, i) => (
-                <div key={i} className="relative pl-8">
-                  <div className="absolute left-0 top-2 w-4 h-4 rounded-full border-4 border-background bg-primary"></div>
-                  <div className="bg-secondary/20 backdrop-blur-sm rounded-lg p-4 hover:bg-secondary/30 transition-colors">
-                    <h4 className="font-semibold text-lg text-foreground">{edu.degree}</h4>
-                    <p className="text-primary/90 mt-1 font-medium">{edu.institution}</p>
-                    <div className="mt-3 flex items-center gap-4 text-sm">
-                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{edu.year}</span>
-                      <span className="text-foreground/80 font-medium">{edu.score}</span>
-                    </div>
+          <div className="space-y-3">
+            {education.map((edu, i) => (
+              <div key={i} className="bg-card/80 rounded-lg p-4">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h4 className="font-medium text-foreground">{edu.degree}</h4>
+                    <p className="text-sm text-muted mt-1">{edu.institution}</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-primary font-medium">{edu.year}</div>
+                    <div className="text-sm text-muted mt-1">{edu.score}</div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -435,7 +431,7 @@ export default function Portfolio() {
 
       {/* EXPERIENCE TIMELINE */}
       <section id="experience" className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-6 text-foreground">Experience</h3>
+        <h3 className="text-xl font-semibold mb-6 text-foreground">Professional Experience</h3>
         <div className="space-y-4">
           {timeline.slice(0, visibleExperiences).map((t) => (
             <div key={t.role} className="bg-card rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
@@ -561,7 +557,7 @@ export default function Portfolio() {
                 <textarea name="message" rows={4} required className="w-full mt-1 p-2 border border-border dark:bg-card dark:text-foreground rounded" />
               </div>
               <div className="flex items-center gap-3">
-                <button type="submit" className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90 transition-opacity">Send Message</button>
+                <button type="submit" className="px-4 py-2 border border-border rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity">Send Message</button>
                 <small className="text-xs text-muted">{status || `Or email me directly at santoshkitkare@gmail.com`}</small>
               </div>
             </form>
