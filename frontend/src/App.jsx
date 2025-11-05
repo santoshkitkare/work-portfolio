@@ -23,20 +23,17 @@ export default function Portfolio() {
 
   const skills = [
     { name: 'Python', level: 'Senior' },
-    { name: 'Generative AI', level: 'Senior' },
-    { name: 'Agentic AI', level: 'Intermediate' },
-    { name: 'LangChain', level: 'Learning' },
-    { name: 'LangGraph', level: 'Learning' },
+    { name: 'C', level: 'Senior' },
     { name: 'MLOps / LLMOps', level: 'Senior' },
     { name: 'AWS (ECS, Lambda, S3)', level: 'Senior' },
     { name: 'Docker & CI/CD (Jenkins)', level: 'Senior' },
     { name: 'Terraform & CloudFormation', level: 'Senior' },
     { name: 'FastAPI', level: 'Senior' },
+    { name: 'Generative AI', level: 'Senior' },
     { name: 'DynamoDB / PostgreSQL', level: 'Intermediate' },
     { name: 'Vibe Coding', level: 'Intermediate' },
     { name: 'OpenAI Assistant API', level: 'Intermediate' },
-    { name: 'Vector Databases', level: 'Intermediate' },
-    { name: 'Kubernetes', level: 'Learning' }
+    { name: 'Vector Databases', level: 'Intermediate' }
   ];
 
   // Projects pulled from GitHub (public repos) — update descriptions and links as needed
