@@ -46,6 +46,8 @@ jobs:
       - name: Deploy Lambda (SAM)
         run: |
           set +e
+          cd backend
+          pip install aws-sam-cli
           sam build && sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities CAPABILITY_IAM --stack-name santosh-portfolio-api --s3-bucket ${{ secrets.AWS_DEPLOY_BUCKET }}
           EXIT_CODE=$?
           if [ $EXIT_CODE -ne 0 ] && ! grep -q "No changes to deploy" <<< "$(cat .aws-sam/build/template.yaml 2>/dev/null)"; then
@@ -75,5 +77,3 @@ jobs:
       - name: Upload Frontend to S3
         run: aws s3 sync frontend/dist s3://${{ secrets.AWS_DEPLOY_BUCKET }} --delete
 
-      - name: Upload Frontend to S3
-        run: aws s3 sync frontend/dist s3://${{ secrets.AWS_DEPLOY_BUCKET }} --delete
