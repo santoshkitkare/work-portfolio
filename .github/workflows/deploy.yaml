@@ -56,7 +56,7 @@ jobs:
           else
             echo "No changes detected or successful deployment — continuing..."
           fi
-          shell: bash
+        shell: bash
 
       - name: Get API Gateway URL
         id: api
