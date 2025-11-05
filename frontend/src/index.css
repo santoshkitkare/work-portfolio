@@ -5,30 +5,30 @@
 /* Color tokens copied/adapted from EmergentCode project to provide a consistent "white" theme */
 @layer base {
 	:root {
-		--background: 210 85% 40%;
-		--foreground: 0 0% 100%;
-		--card: 210 75% 60%;
-		--card-foreground: 0 0% 100%;
-		--popover: 210 75% 60%;
-		--popover-foreground: 0 0% 100%;
-		--primary: 210 65% 80%;
-		--primary-foreground: 210 85% 25%;
-		--secondary: 210 70% 70%;
-		--secondary-foreground: 210 85% 25%;
-		--muted: 210 60% 65%;
-		--muted-foreground: 0 0% 100%;
-		--accent: 210 55% 75%;
-		--accent-foreground: 0 0% 100%;
-		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 0 0% 98%;
-		--border: 210 50% 70%;
-		--input: 210 50% 70%;
-		--ring: 210 85% 85%;
-		--chart-1: 195 85% 65%;
-		--chart-2: 220 75% 60%;
-		--chart-3: 240 70% 55%;
-		--chart-4: 180 80% 65%;
-		--chart-5: 200 85% 60%;
+		--background: 222 47% 11%;
+		--foreground: 210 40% 98%;
+		--card: 223 47% 18%;
+		--card-foreground: 210 40% 98%;
+		--popover: 223 47% 18%;
+		--popover-foreground: 210 40% 98%;
+		--primary: 217 91% 60%;
+		--primary-foreground: 210 40% 98%;
+		--secondary: 217 32% 32%;
+		--secondary-foreground: 210 40% 98%;
+		--muted: 215 25% 27%;
+		--muted-foreground: 217 15% 75%;
+		--accent: 217 91% 60%;
+		--accent-foreground: 210 40% 98%;
+		--destructive: 0 84% 60%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 217 32% 32%;
+		--input: 217 32% 32%;
+		--ring: 224 76% 48%;
+		--chart-1: 262 83% 58%;
+		--chart-2: 217 91% 60%;
+		--chart-3: 199 89% 48%;
+		--chart-4: 35 91% 61%;
+		--chart-5: 291 70% 58%;
 		--radius: 0.5rem;
 	}
 
