@@ -250,7 +250,7 @@ export default function Portfolio() {
     };
 
     try {
-      const url = `${API_URL || ''}/api/contact`;
+      const url = `${API_URL || ''}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
