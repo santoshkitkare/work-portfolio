@@ -20,8 +20,8 @@ export default function Portfolio() {
   }, [darkMode]);
 
   const name = 'Santosh Itkare';
-  const title = 'Senior Python Developer • MLOps & LLMOps Engineer';
-  const tagline = 'Building production-grade ML systems, automations, and LLM-driven developer tools.';
+  const title = 'Senior Python Developer • Data Engineer • MLOps & LLMOps Engineer • Team Leader';
+  const tagline = 'Accelerating Delivery and Innovation through AI, Automation and Python + AWS';
   const availability = 'Available for new opportunities'; // Can be changed to "Working as {role} at {company}"
 
   const education = [
@@ -53,6 +53,29 @@ export default function Portfolio() {
     { name: 'OpenAI Assistant API', level: 'Intermediate', icon: '🤖' },
     { name: 'Vector Databases', level: 'Intermediate', icon: '📊' }
   ];
+
+  // Icon mapping: prefer Iconify slugs for known names, fallback to devicon slug
+  const iconMap = {
+    'python': 'logos:python',
+    'c': 'simple-icons:c',
+    'mlops / llmops': 'mdi:robot',
+    'aws (ecs, lambda, s3)': 'logos:aws',
+    'docker & ci/cd (jenkins)': 'logos:docker',
+    'terraform & cloudformation': 'logos:terraform',
+    'fastapi': 'simple-icons:fastapi',
+    'generative ai': 'mdi:brain',
+    'dynamodb / postgresql': 'logos:postgresql',
+    'openai assistant api': 'simple-icons:openai',
+    'vector databases': 'mdi:database'
+  };
+
+  const getIconUrl = (skillName) => {
+    const key = skillName.toLowerCase().trim();
+    if (iconMap[key]) return `https://api.iconify.design/${iconMap[key]}.svg`;
+    // fallback: make a simple slug for devicon
+    const slug = skillName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return `https://raw.githubusercontent.com/devicons/devicon/master/icons/${slug}/${slug}-original.svg`;
+  };
 
   // Projects pulled from GitHub (public repos) — update descriptions and links as needed
   const projects = [
@@ -97,7 +120,7 @@ export default function Portfolio() {
         'Created intuitive Streamlit interface for ticket analysis',
         'Integrated with existing ticketing systems via APIs'
       ],
-      tech: ['Python', 'Streamlit', 'Gen AI', 'AWS(API Gateway, Lambda, DynamoDB, Bedrock, OpenAI)'],
+      tech: ['Python', 'Streamlit', 'Gen AI', 'AWS', 'API Gateway', 'Lambda', 'DynamoDB', 'Bedrock', 'OpenAI'],
       url: 'https://github.com/santoshkitkare/ai-support-ticket-classifier'
     }
   ];
@@ -107,7 +130,7 @@ export default function Portfolio() {
     {
       role: 'Senior Python Developer (AI/ML)',
       company: 'NextBurb',
-      period: 'Jun 2025 - August 2025',
+      period: 'Jun 2025 - Aug 2025',
       shortDesc: 'Led AI/ML initiatives for real estate property analysis and recommendations platform.',
       desc: 'Developed comprehensive AI solutions for property evaluation and automated data extraction systems to streamline real estate operations.',
       bullets: [
@@ -118,7 +141,7 @@ export default function Portfolio() {
     {
       role: 'Senior Data Scientist',
       company: 'Bruviti (K2 Technosoft India Pvt. Ltd)',
-      period: 'Oct 2022 - April 2025',
+      period: 'Oct 2022 - Apr 2025',
       shortDesc: 'Led AI/ML solutions development for appliance service optimization using LLMs and advanced analytics.',
       desc: 'Spearheaded the development of LLM-powered systems and ML pipelines for appliance service operations, focusing on parts prediction and diagnostic automation.',
       bullets: [
@@ -137,7 +160,7 @@ export default function Portfolio() {
     {
       role: 'Python Developer - AI/ML',
       company: 'Bruviti (K2 Technosoft India Pvt. Ltd)',
-      period: 'Mar 2020 — September 2022',
+      period: 'Mar 2020 — Sept 2022',
       shortDesc: 'Built and deployed ML-powered parts prediction system for appliance repairs.',
       desc: 'Led the development of an advanced parts prediction system using deep learning, improving first-time fix rates and technician efficiency.',
       bullets: [
@@ -208,7 +231,7 @@ export default function Portfolio() {
     },
     {
       quote: 'Santosh is a great SW engineer. He is a specialist in the network domain. I trusted Santosh to realize complex tasks and the results were up to my expectations. I highly recommend Santosh.',
-      who: 'Regis BONDIDIER / Software Engineering Manager'
+      who: 'Regis Bondidier / Software Engineering Manager'
     }
 
 
@@ -267,41 +290,76 @@ export default function Portfolio() {
         </nav>
       </header>
 
-      {/* HERO */}
-      <section className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+  {/* HERO */}
+  <section className="max-w-6xl mx-auto px-6 py-8 grid md:grid-cols-2 gap-8 items-center">
         <div>
-          <p className="text-sm uppercase text-primary font-medium">Hi, I'm</p>
+          <p className="text-m uppercase text-primary font-medium">Hi, I'm</p>
           <h2 className="text-4xl font-bold leading-tight">{name}</h2>
-          <p className="mt-4 text-lg text-muted">{tagline}</p>
-          <p className="mt-2 text-primary font-medium">{availability}</p>
+          <p className="mt-3 text-lg text-muted">{tagline}</p>
+          <p className="mt-3 flex items-center text-primary font-medium">
+            <span className="relative inline-flex items-center justify-center w-5 h-5">
+              <span
+                className="absolute inline-flex w-5 h-5 rounded-full bg-emerald-500 opacity-60 animate-ping"
+                style={{ animationDuration: '900ms' }}
+                aria-hidden="true"
+              />
+              <span className="relative inline-flex w-3 h-3 rounded-full bg-emerald-500" aria-hidden="true" />
+            </span>
+            <span className="ml-2">{availability}</span>
+          </p>
 
-          <div className="mt-6 flex gap-3">
+          <div className="mt-2 flex gap-2">
             <a href="#projects" className="inline-block px-5 py-3 border border-border rounded-lg bg-primary text-primary-foreground shadow hover:opacity-95">View Work</a>
             <a href="#contact" className="inline-block px-5 py-3 border border-border rounded-lg hover:bg-secondary hover:text-secondary-foreground transition-colors">Get In Touch</a>
           </div>
 
-          <div className="mt-8 text-sm text-muted">
+          <div className="mt-8 text-m text-muted">
             <p><strong>Positioning:</strong> Python Developer, Data Analyst, MLOps & LLMOps Engineer — experienced in production ML, model ops, and generative AI tooling.</p>
           </div>
         </div>
 
-        <div className="bg-card rounded-2xl shadow p-6">
-          <h3 className="font-semibold text-foreground">Quick Stats</h3>
-          <ul className="mt-4 grid grid-cols-2 gap-4 text-sm">
-            <li className="border border-border p-3 rounded text-muted">20+ years software dev</li>
-            <li className="border border-border p-3 rounded text-muted">5+ years Python / AI</li>
-            <li className="border border-border p-3 rounded text-muted">Gen AI & MLOps</li>
-            <li className="border border-border p-3 rounded text-muted">AWS, Docker, GitHub Action, CI/CD</li>
-          </ul>
+        <div className="space-y-3">
+          <div className="bg-card rounded-xl shadow p-4">
+            <h3 className="font-semibold text-foreground text-sm">Quick Stats</h3>
+            <ul className="mt-2 grid grid-cols-2 gap-2 text-xm">
+              <li className="border border-border p-2 rounded text-muted">20+ years software Experience</li>
+              <li className="border border-border p-2 rounded text-muted">5+ years Python / AI</li>
+              <li className="border border-border p-2 rounded text-muted">AWS, Docker, GitHub Action, CI/CD</li>
+              <li className="border border-border p-2 rounded text-muted">Gen AI & MLOps</li>
+            </ul>
+          </div>
+
+          {/* Education Section */}
+          <div className="bg-card rounded-xl shadow p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-primary">🎓</span>
+              <h3 className="text-sm font-semibold text-foreground">Education</h3>
+            </div>
+            <div className="space-y-1">
+              {education.map((edu, i) => (
+                <div key={i} className="border border-border rounded p-2 text-muted space-y-2">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h4 className="font-medium text-s text-foreground">{edu.degree}</h4>
+                      <p className="text-[15px] text-muted mt-0.5">{edu.institution}</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-primary text-s font-medium">{edu.year}</div>
+                      <div className="text-[15px] text-muted mt-0.5">{edu.score}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-10">
-
-        <div className="bg-card rounded-2xl shadow p-8">
-          <h3 className="text-2xl font-semibold text-foreground">About Me</h3>
-          <p className="mt-4 text-muted">I am a seasoned software engineer with deep expertise in Python and a strong background in embedded systems. Over two decades of engineering experience, I have transitioned into building production-ready machine learning systems and MLOps pipelines. I architect scalable solutions, deploy models using robust CI/CD practices, and design automation that reduces time-to-production. I have hands-on experience with PyTorch, TensorFlow, LangChain, LangGraph, and modern LLM tooling. I pair technical leadership with mentorship—guiding teams to deliver reliable, maintainable ML-driven products.</p>
+      <section id="about" className="max-w-6xl mx-auto px-6 py-0">
+        <h3 className="text-xl font-semibold  mb-2 text-foreground">About Me</h3>
+        <div className="bg-card rounded-2xl shadow p-4">  
+          <p className="mt-1 text-muted">I am a seasoned software engineer with deep expertise in Python and a strong background in embedded systems. Over two decades of engineering experience, I have transitioned into building production-ready machine learning systems and MLOps pipelines. I architect scalable solutions, deploy models using robust CI/CD practices, and design automation that reduces time-to-production. I have hands-on experience with PyTorch, TensorFlow, LangChain, LangGraph, and modern LLM tooling. I pair technical leadership with mentorship—guiding teams to deliver reliable, maintainable ML-driven products.</p>
 
           <div className="mt-6">
             <h4 className="font-medium">Core focus</h4>
@@ -310,67 +368,75 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* EDUCATION & SKILLS */}
-      <section className="max-w-6xl mx-auto px-6 py-10 space-y-10">
-        {/* Education Section */}
-        <div className="bg-card/50 rounded-xl p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-primary text-xl">🎓</span>
-            <h3 className="text-lg font-semibold text-foreground">Education</h3>
-          </div>
-          <div className="space-y-3">
-            {education.map((edu, i) => (
-              <div key={i} className="bg-card/80 rounded-lg p-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-medium text-foreground">{edu.degree}</h4>
-                    <p className="text-sm text-muted mt-1">{edu.institution}</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-primary font-medium">{edu.year}</div>
-                    <div className="text-sm text-muted mt-1">{edu.score}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
+      {/* SKILLS */}
+      <section className="max-w-6xl mx-auto px-6 py-1 space-y-1">
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Skills & Expertise</h3>
         {/* Skills Section */}
         <div className="bg-card rounded-2xl shadow-sm p-6">
-          <h3 className="text-xl font-semibold mb-6 text-foreground">Skills & Expertise</h3>
+          
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {skills.map((skill) => (
-              <div key={skill.name} className="bg-secondary/50 p-3 rounded-lg flex items-center gap-2">
-                <img 
-                  src={`https://raw.githubusercontent.com/devicons/devicon/master/icons/${skill.name.toLowerCase()}/${skill.name.toLowerCase()}-original.svg`}
-                  alt={skill.name}
-                  className="w-5 h-5"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = `https://api.iconify.design/${
-                      skill.name.toLowerCase().includes('aws') ? 'logos:aws' :
-                      skill.name.toLowerCase().includes('docker') ? 'logos:docker-icon' :
-                      skill.name.toLowerCase().includes('fastapi') ? 'simple-icons:fastapi' :
-                      skill.name.toLowerCase().includes('terraform') ? 'logos:terraform-icon' :
-                      skill.name.toLowerCase().includes('jenkins') ? 'devicon:jenkins' :
-                      'carbon:skill-level'
-                    }.svg`;
-                  }}
-                />
-                <div>
-                  <div className="font-medium text-foreground text-sm">{skill.name}</div>
-                  <div className="text-xs text-primary font-medium">{skill.level}</div>
+            {skills.map((skill) => {
+              const candidates = (() => {
+                const key = skill.name.toLowerCase().trim();
+                const list = [];
+                // prefer mapped Iconify slug
+                if (iconMap[key]) list.push(`https://api.iconify.design/${iconMap[key]}.svg`);
+                // try devicon slug (sanitized)
+                const slug = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+                list.push(`https://raw.githubusercontent.com/devicons/devicon/master/icons/${slug}/${slug}-original.svg`);
+                // generic fallbacks (some common icons)
+                if (skill.name.toLowerCase().includes('aws')) list.push('https://api.iconify.design/logos:aws.svg');
+                if (skill.name.toLowerCase().includes('docker')) list.push('https://api.iconify.design/logos:docker-icon.svg');
+                if (skill.name.toLowerCase().includes('python')) list.push('https://api.iconify.design/logos:python.svg');
+                return list;
+              })();
+
+              return (
+                <div key={skill.name} className="bg-secondary/50 p-3 rounded-lg flex items-center gap-3">
+                  <img
+                    src={candidates[0]}
+                    alt={skill.name}
+                    className="w-8 h-8 rounded-full object-contain"
+                    data-candidates={JSON.stringify(candidates)}
+                    data-attempt="0"
+                    onError={(e) => {
+                      try {
+                        const el = e.currentTarget;
+                        const list = JSON.parse(el.dataset.candidates || '[]');
+                        let attempt = Number(el.dataset.attempt || 0) + 1;
+                        if (attempt < list.length) {
+                          el.dataset.attempt = String(attempt);
+                          el.src = list[attempt];
+                          return;
+                        }
+                      } catch (err) {
+                        // ignore json parse errors
+                      }
+                      // all attempts failed -> hide image and show emoji fallback
+                      e.currentTarget.style.display = 'none';
+                      const fb = e.currentTarget.nextElementSibling;
+                      if (fb) fb.style.display = 'inline-flex';
+                    }}
+                  />
+
+                  <div style={{ display: 'none' }} className="w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-tr from-indigo-100 via-pink-100 to-yellow-100 text-lg">
+                    <span className="select-none">{skill.icon}</span>
+                  </div>
+
+                  <div>
+                    <div className="font-medium text-foreground text-sm">{skill.name}</div>
+                    <div className="text-xs text-primary font-medium">{skill.level}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-6 text-foreground">Selected Projects & Case Studies</h3>
+      <section id="projects" className="max-w-6xl mx-auto px-6 py-1">
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Projects & Case Studies</h3>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((p) => (
             <article key={p.title} className="bg-card rounded-lg shadow p-6 hover:shadow-lg transition">
@@ -383,9 +449,9 @@ export default function Portfolio() {
                 </div>
               </div>
               
-              <p className="mt-3 text-muted">{p.shortDesc}</p>
+              <p className="mt-1 text-muted">{p.shortDesc}</p>
               
-              <div className="mt-3">
+              <div className="mt-1">
                 <p className="text-muted">
                   {expandedProjects[p.title] ? p.desc : p.desc.slice(0, 150) + (p.desc.length > 150 ? '...' : '')}
                 </p>
@@ -417,12 +483,12 @@ export default function Portfolio() {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-12 bg-card rounded-xl shadow-sm p-8 text-center">
+        <div className="mt-8 mx-auto bg-card rounded-xl shadow-sm px-6 py-4 text-center w-max">
           <h3 className="text-2xl font-semibold text-foreground mb-3">Ready to Build Something Amazing?</h3>
-          <p className="text-muted mb-6">Let's discuss how these skills can drive your next AI/ML project to success</p>
+          <p className="text-muted mb-3">Let's discuss how these skills can drive your next AI/ML project to success</p>
           <a 
             href="#contact" 
-            className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors border border-primary shadow-sm"
+            className="inline-block px-3 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors border border-primary shadow-sm"
           >
             Start a Conversation
           </a>
@@ -430,22 +496,20 @@ export default function Portfolio() {
       </section>
 
       {/* EXPERIENCE TIMELINE */}
-      <section id="experience" className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-6 text-foreground">Professional Experience</h3>
+      <section id="experience" className="max-w-6xl mx-auto px-6 py-1">
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Professional Experience</h3>
         <div className="space-y-4">
           {timeline.slice(0, visibleExperiences).map((t) => (
             <div key={t.role} className="bg-card rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-semibold text-foreground">{t.role}</h4>
-                  <p className="text-sm text-muted">{t.company}</p>
-                  <p className="text-sm text-muted mt-1">{t.period}</p>
+                  <h4 className="font-semibold text-foreground">{t.role} | {t.company} | {t.period}</h4>
                 </div>
               </div>
               
-              <p className="mt-3 text-muted">{t.shortDesc}</p>
+              <p className="mt-1 text-muted">{t.shortDesc}</p>
               
-              <div className="mt-3">
+              <div className="mt-1">
                 <p className="text-muted">
                   {expandedProjects[t.role] ? t.desc : t.desc.slice(0, 150) + '...'}
                 </p>
@@ -468,7 +532,7 @@ export default function Portfolio() {
             </div>
           ))}
           {timeline.length > visibleExperiences && (
-            <div className="text-center pt-6">
+            <div className="text-center pt-1">
               <button
                 onClick={() => setVisibleExperiences(prev => Math.min(prev + 3, timeline.length))}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
@@ -482,61 +546,64 @@ export default function Portfolio() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
-        <h3 className="text-xl font-semibold mb-6 text-foreground">Recommendations</h3>
+      <section className="max-w-6xl mx-auto px-6 py-1">
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Recommendations</h3>
         <div className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
             <blockquote key={i} className="bg-card p-6 rounded-lg shadow">
               <p className="text-muted italic">"{t.quote}"</p>
-              <p className="mt-4 text-sm text-muted">— {t.who}</p>
+              <p className="mt-4 text-sm">
+                <span className="font-semibold text-foreground">— {t.who}</span>
+                <span className="inline-flex items-center ml-3 text-primary" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.286c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 10.286h-3v-4.5c0-1.071-.929-2-2-2s-2 .929-2 2v4.5h-3v-9h3v1.286c.801-1.086 2.5-1.286 3.5-1.286 2.206 0 4 1.794 4 4v5z" />
+                  </svg>
+                </span>
+              </p>
             </blockquote>
           ))}
         </div>
       </section>
 
       {/* CONTACT */}
-      <footer id="contact" className="max-w-6xl mx-auto px-6 py-12">
+      <footer id="contact" className="max-w-6xl mx-auto px-6 py-2">
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Get in touch</h3>
         <div className="bg-card rounded-lg shadow p-6 grid md:grid-cols-2 gap-6">
           <div>
-            <h4 className="text-lg font-semibold text-foreground">Get in touch</h4>
+            
             <p className="mt-2 text-sm text-muted">Open to full-time and contract roles: Python Developer, Data Analyst, MLOps, LLMOps.</p>
 
             <div className="mt-4 space-y-3 text-sm">
-              <a 
-                href="https://github.com/santoshkitkare" 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://github.com/santoshkitkare"
+                target="_blank"
+                rel="noreferrer"
                 className="flex items-center gap-3 px-4 py-2 bg-card hover:bg-secondary/50 border border-border rounded-lg transition-colors group"
               >
-                <img 
-                  src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg"
-                  alt="GitHub"
-                  className="w-5 h-5 opacity-80 group-hover:opacity-100"
-                />
+                <svg className="w-5 h-5 text-muted group-hover:text-primary-foreground" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.303-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 016.003 0c2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.873.12 3.176.77.84 1.233 1.911 1.233 3.221 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.102.823 2.222 0 1.606-.015 2.903-.015 3.293 0 .32.216.694.825.576C20.565 21.796 24 17.298 24 12 24 5.37 18.627 0 12 0z" />
+                </svg>
                 <span className="text-primary group-hover:text-primary-foreground">github.com/santoshkitkare</span>
               </a>
-              <a 
-                href="https://www.linkedin.com/in/santosh-itkare-56993a38/" 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://www.linkedin.com/in/santosh-itkare-56993a38/"
+                target="_blank"
+                rel="noreferrer"
                 className="flex items-center gap-3 px-4 py-2 bg-card hover:bg-secondary/50 border border-border rounded-lg transition-colors group"
               >
-                <img 
-                  src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/linkedin.svg"
-                  alt="LinkedIn"
-                  className="w-5 h-5 opacity-80 group-hover:opacity-100"
-                />
+                <svg className="w-5 h-5 text-muted group-hover:text-primary-foreground" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.286c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 10.286h-3v-4.5c0-1.071-.929-2-2-2s-2 .929-2 2v4.5h-3v-9h3v1.286c.801-1.086 2.5-1.286 3.5-1.286 2.206 0 4 1.794 4 4v5z" />
+                </svg>
                 <span className="text-primary group-hover:text-primary-foreground">linkedin.com/in/santosh-itkare-56993a38</span>
               </a>
-              <a 
-                href="mailto:santoshkitkare@gmail.com" 
+              <a
+                href="mailto:santoshkitkare@gmail.com"
                 className="flex items-center gap-3 px-4 py-2 bg-card hover:bg-secondary/50 border border-border rounded-lg transition-colors group"
               >
-                <img 
-                  src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gmail.svg"
-                  alt="Email"
-                  className="w-5 h-5 opacity-80 group-hover:opacity-100"
-                />
+                <svg className="w-5 h-5 text-muted group-hover:text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M3 8.5v7.75C3 18.216 4.284 19.5 5.75 19.5h12.5c1.466 0 2.75-1.284 2.75-2.75V8.5" />
+                  <path d="M21 6.5l-9 6-9-6" />
+                </svg>
                 <span className="text-primary group-hover:text-primary-foreground">santoshkitkare@gmail.com</span>
               </a>
             </div>
