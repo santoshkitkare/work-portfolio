@@ -38,11 +38,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # - name: Deploy Lambda (SAM)
+      #   run: |
+      #     cd backend
+      #     pip install aws-sam-cli
+      #     sam build && sam deploy --no-confirm-changeset --stack-name santosh-portfolio-api --capabilities CAPABILITY_IAM --s3-bucket ${{ secrets.AWS_DEPLOY_BUCKET }}
       - name: Deploy Lambda (SAM)
         run: |
-          cd backend
-          pip install aws-sam-cli
-          sam build && sam deploy --no-confirm-changeset --stack-name santosh-portfolio-api --capabilities CAPABILITY_IAM --s3-bucket ${{ secrets.AWS_DEPLOY_BUCKET }}
+          set +e
+          sam build && sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --capabilities CAPABILITY_IAM --stack-name santosh-portfolio-api --s3-bucket ${{ secrets.AWS_DEPLOY_BUCKET }}
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 0 ] && ! grep -q "No changes to deploy" <<< "$(cat .aws-sam/build/template.yaml 2>/dev/null)"; then
+            echo "Lambda deployment failed with exit code $EXIT_CODE"
+            exit $EXIT_CODE
+          else
+            echo "No changes detected or successful deployment — continuing..."
+          fi
+          shell: bash
 
       - name: Get API Gateway URL
         id: api
