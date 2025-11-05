@@ -9,6 +9,7 @@ import { API_URL } from './config';
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(true);
   const [expandedProjects, setExpandedProjects] = useState({});
+  const [visibleExperiences, setVisibleExperiences] = useState(3);
   
   useEffect(() => {
     if (darkMode) {
@@ -261,7 +262,7 @@ export default function Portfolio() {
         <nav className="space-x-4 text-sm">
           <a href="#about" className="hover:underline">About</a>
           <a href="#projects" className="hover:underline">Projects</a>
-          <a href="#experience" className="hover:underline">Experience</a>
+          <a href="#experience" className="hover:underline">Professional Experience</a>
           <a href="#contact" className="hover:underline">Contact</a>
         </nav>
       </header>
@@ -312,21 +313,30 @@ export default function Portfolio() {
       {/* EDUCATION & SKILLS */}
       <section className="max-w-6xl mx-auto px-6 py-10 space-y-10">
         {/* Education Section */}
-        <div className="bg-card rounded-2xl shadow-sm p-6">
-          <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-foreground">
-            <span className="text-2xl">🎓</span> Education
-          </h3>
-          <div className="space-y-6">
-            {education.map((edu, i) => (
-              <div key={i} className="bg-secondary/50 rounded-lg p-6">
-                <h4 className="font-semibold text-lg text-foreground">{edu.degree}</h4>
-                <p className="text-muted mt-1">{edu.institution}</p>
-                <div className="mt-2 flex justify-between text-sm">
-                  <span className="text-primary font-medium">{edu.year}</span>
-                  <span className="text-primary font-medium">{edu.score}</span>
+        <div className="bg-card rounded-2xl shadow-sm p-8">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="bg-primary/10 p-3 rounded-xl">
+              <span className="text-2xl">🎓</span>
+            </div>
+            <h3 className="text-xl font-semibold text-foreground">Education</h3>
+          </div>
+          <div className="relative">
+            <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-border"></div>
+            <div className="space-y-8">
+              {education.map((edu, i) => (
+                <div key={i} className="relative pl-8">
+                  <div className="absolute left-0 top-2 w-6 h-6 rounded-full border-4 border-background bg-primary"></div>
+                  <div className="bg-secondary/20 backdrop-blur-sm rounded-xl p-6 hover:bg-secondary/30 transition-colors">
+                    <h4 className="font-semibold text-lg text-foreground">{edu.degree}</h4>
+                    <p className="text-primary/90 mt-1 font-medium">{edu.institution}</p>
+                    <div className="mt-3 flex items-center gap-4 text-sm">
+                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{edu.year}</span>
+                      <span className="text-foreground/80 font-medium">{edu.score}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -400,8 +410,8 @@ export default function Portfolio() {
       <section id="experience" className="max-w-6xl mx-auto px-6 py-10">
         <h3 className="text-xl font-semibold mb-6 text-foreground">Experience</h3>
         <div className="space-y-4">
-          {timeline.map((t) => (
-            <div key={t.role} className="bg-card rounded-lg shadow p-6">
+          {timeline.slice(0, visibleExperiences).map((t) => (
+            <div key={t.role} className="bg-card rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="font-semibold text-foreground">{t.role}</h4>
@@ -414,16 +424,15 @@ export default function Portfolio() {
               
               <div className="mt-3">
                 <p className="text-muted">
-                  {expandedProjects[t.role] ? t.desc : t.desc.slice(0, 150) + (t.desc.length > 150 ? '...' : '')}
+                  {expandedProjects[t.role] ? t.desc : t.desc.slice(0, 150) + '...'}
                 </p>
-                {t.desc.length > 150 && (
-                  <button
-                    onClick={() => setExpandedProjects(prev => ({...prev, [t.role]: !prev[t.role]}))}
-                    className="text-indigo-600 dark:text-indigo-400 text-sm mt-1 hover:underline focus:outline-none"
-                  >
-                    {expandedProjects[t.role] ? 'Show less' : 'Read more'}
-                  </button>
-                )}
+                <button
+                  onClick={() => setExpandedProjects(prev => ({...prev, [t.role]: !prev[t.role]}))}
+                  className="text-primary text-sm mt-2 hover:underline focus:outline-none inline-flex items-center gap-1"
+                >
+                  {expandedProjects[t.role] ? 'Show less' : 'Read more'}
+                  <span className="text-xs">{expandedProjects[t.role] ? '↑' : '↓'}</span>
+                </button>
               </div>
 
               {expandedProjects[t.role] && (
@@ -435,6 +444,17 @@ export default function Portfolio() {
               )}
             </div>
           ))}
+          {timeline.length > visibleExperiences && (
+            <div className="text-center pt-6">
+              <button
+                onClick={() => setVisibleExperiences(prev => Math.min(prev + 3, timeline.length))}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+              >
+                Show More Experiences
+                <span className="text-sm">({timeline.length - visibleExperiences} remaining)</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
