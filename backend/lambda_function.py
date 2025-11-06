@@ -25,6 +25,7 @@ def lambda_handler(event, context):
         msg['Subject'] = f"Portfolio Contact from {name}"
         msg['From'] = os.environ['SMTP_USER']
         msg['To'] = os.environ['TO_EMAIL']
+        msg['Cc'] = email
         msg.set_content(f"From: {name} <{email}>\n\n{message}")
 
         with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
