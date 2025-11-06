@@ -200,7 +200,7 @@ export default function Portfolio() {
     {
       role: 'Technical Lead',
       company: '2Wire IDC Pvt. Ltd. Pune',
-      period: 'Apr 2015 - Oct 2012',
+      period: 'Apr 2015 - Oct 2022',
       shortDesc: 'Led embedded systems development for networking and IoT devices.',
       desc: 'Spearheaded development of embedded C-based systems, focusing on networking protocols and IoT device frameworks.',
       bullets: [
@@ -366,8 +366,15 @@ export default function Portfolio() {
       {/* ABOUT */}
       <section id="about" className="max-w-6xl mx-auto px-6 py-0">
         <h3 className="text-xl font-semibold  mb-2 text-foreground">About Me</h3>
-        <div className="bg-card rounded-2xl shadow p-4">  
-          <p className="mt-1 text-muted">I am a seasoned software engineer with deep expertise in Python and a strong background in embedded systems. Over two decades of engineering experience, I have transitioned into building production-ready machine learning systems and MLOps pipelines. I architect scalable solutions, deploy models using robust CI/CD practices, and design automation that reduces time-to-production. I have hands-on experience with PyTorch, TensorFlow, LangChain, LangGraph, and modern LLM tooling. I pair technical leadership with mentorship—guiding teams to deliver reliable, maintainable ML-driven products.</p>
+        <div className="bg-card rounded-2xl shadow p-4">
+          <div className="space-y-3 text-muted">
+            <p>I am a results-driven software engineer with 20+ years of experience — combining low-level system mastery with modern AI and cloud innovation.</p>
+            <p>For the first 15 years of my career, I worked deep in Embedded Systems and Network Programming (C), building performance-critical solutions across hardware, firmware, and communication stacks. That experience grounded me in efficiency, reliability, and precision — traits that still define my work.</p>
+            <p>In the last 5+ years, I have transitioned into Python, AI/ML, and Cloud Development, designing and deploying scalable, automated solutions using AWS, Docker, Terraform, Jenkins, and MLOps frameworks. My focus: bridging traditional software engineering with intelligent automation.</p>
+            <p>As a Senior Python Developer, I have led end-to-end automation of build-test-deploy pipelines, brought ML models into production, and delivered business-ready systems under tight timelines — all while mentoring teams and driving technical excellence.</p>
+            <p>I thrive at the intersection of software engineering, AI, and DevOps — turning complex challenges into streamlined, data-driven solutions. I am now exploring Team Lead or Technical Manager roles where I can scale architectures, guide teams, and shape next-gen intelligent systems.</p>
+            <p>Let’s connect if you’re building something ambitious — and want it done right.</p>
+          </div>
 
           <div className="mt-6">
             <h4 className="font-medium">Core focus</h4>
